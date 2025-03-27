@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Run</title>
+    <g id="run-icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M8,5 L8,19 C8,19.3453143 8.17967317,19.6544035 8.46853245,19.8284271 C8.75739173,20.0024506 9.11545989,20.0294118 9.4282885,19.9004936 L19.4282885,14.9004936 C19.7728257,14.7519553 20,14.3968559 20,14 C20,13.6031441 19.7728257,13.2480447 19.4282885,13.0995064 L9.4282885,8.09950641 C9.11545989,7.97058824 8.75739173,7.99754937 8.46853245,8.17157288 C8.17967317,8.34559638 8,8.65468574 8,9 L8,5 Z M10,10.869 L16.2372739,14 L10,17.131 L10,10.869 Z" id="Combined-Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+        <rect id="frame" x="0" y="0" width="24" height="24"></rect>
+    </g>
+</svg>

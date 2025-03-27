@@ -1,0 +1,355 @@
+.code-editor {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  overflow: hidden;
+  background-color: var(--editor-bg-color, #1e1e1e);
+  font-family: 'Courier New', monospace;
+  border-radius: 4px;
+}
+
+.line-numbers {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 100%;
+  background-color: var(--line-numbers-bg, #252525);
+  color: var(--line-numbers-color, #707070);
+  text-align: right;
+  padding-top: 5px;
+  overflow: hidden;
+  user-select: none;
+  font-size: var(--editor-font-size, 14px);
+  z-index: 1;
+}
+
+.line-number {
+  padding: 0 8px 0 0;
+  line-height: 1.5;
+}
+
+.code-content {
+  position: relative;
+  margin-left: 40px;
+  height: 100%;
+  overflow: auto;
+}
+
+.code-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  border: none;
+  background-color: transparent;
+  color: var(--editor-text-color, #d4d4d4);
+  font-size: var(--editor-font-size, 14px);
+  line-height: 1.5;
+  resize: none;
+  outline: none;
+  z-index: 2;
+  white-space: pre;
+  tab-size: 4;
+  overflow: auto;
+}
+
+.syntax-highlighting {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  color: var(--editor-text-color, #d4d4d4);
+  font-size: var(--editor-font-size, 14px);
+  line-height: 1.5;
+  pointer-events: none;
+  white-space: pre;
+  overflow: auto;
+  tab-size: 4;
+}
+
+.token.keyword { color: #569CD6; }
+.token.string { color: #CE9178; }
+.token.comment { color: #6A9955; }
+.token.number { color: #B5CEA8; }
+.token.operator { color: #D4D4D4; }
+.token.function { color: #DCDCAA; }
+.token.method { color: #DCDCAA; }
+.token.property { color: #9CDCFE; }
+.token.builtin { color: #4EC9B0; }
+.token.boolean { color: #569CD6; }
+.token.null { color: #569CD6; }
+
+
+.code-editor.focused {
+  outline: 1px solid var(--editor-focus-color, #007fd4);
+}
+
+.editor-header {
+  display: flex;
+  background-color: var(--tabs-bg-color, #252525);
+  overflow-x: auto;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border-color, #4a4a4a);
+}
+
+.tabs {
+  display: flex;
+  width: 100%;
+  height: 40px;
+}
+
+.tab {
+  padding: 0 15px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background-color: var(--tab-bg-color, #1e1e1e);
+  color: var(--tab-text-color, #d4d4d4);
+  border: none;
+  border-right: 1px solid var(--border-color, #4a4a4a);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+  position: relative;
+  padding-right: 30px;
+}
+
+.tab.active {
+  background-color: var(--active-tab-bg-color, #252525);
+  color: var(--active-tab-text-color, #ffffff);
+  border-bottom: 2px solid var(--active-tab-border-color, #007fd4);
+}
+
+.tab:hover:not(.active) {
+  background-color: var(--tab-hover-bg-color, #2d2d2d);
+}
+
+.tab.add-tab {
+  width: 40px;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  padding-right: 15px;
+}
+
+.tab-close {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #888;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.tab-close:hover {
+  background: rgba(255, 0, 0, 0.2);
+  color: #fff;
+}
+
+.code-input, .syntax-highlighting code {
+  white-space: pre;
+  word-wrap: normal;
+  overflow-x: auto;
+}
+
+.code-content, .code-input, .syntax-highlighting {
+  overflow-x: auto;
+  min-width: 100%;
+}
+
+.code-content {
+  max-width: 3000px;
+}
+
+.CodeMirror {
+  font-family: 'Fira Code', 'Source Code Pro', monospace;
+  font-size: var(--editor-font-size, 14px);
+  line-height: 1.5;
+  height: 100%;
+  width: 100%;
+}
+
+.light-theme .CodeMirror {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.dark-theme .CodeMirror {
+  background-color: #1e1e2e;
+  color: #f8f8f2;
+}
+
+.dark-theme .CodeMirror-gutters {
+  background-color: #252b3b;
+  border-right: 1px solid #3a4458;
+}
+
+.dark-theme .CodeMirror-linenumber {
+  color: #a7a7a7;
+}
+
+.light-theme .CodeMirror-gutters {
+  background-color: #f5f5f5;
+  border-right: 1px solid #e0e0e0;
+}
+
+.light-theme .CodeMirror-linenumber {
+  color: #999999;
+}
+
+.CodeMirror-activeline-background {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.light-theme .CodeMirror-activeline-background {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.CodeMirror-foldmarker {
+  color: #d7ba7d;
+  text-shadow: none;
+  font-family: Arial, sans-serif;
+  padding: 0 4px;
+  border-radius: 3px;
+}
+
+.dark-theme .CodeMirror-foldmarker {
+  background-color: #3a4458;
+}
+
+.light-theme .CodeMirror-foldmarker {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.CodeMirror-foldgutter {
+  width: 12px;
+}
+
+.CodeMirror-foldgutter-open,
+.CodeMirror-foldgutter-folded {
+  cursor: pointer;
+}
+
+.CodeMirror-foldgutter-open:after {
+  content: "▾";
+}
+
+.CodeMirror-foldgutter-folded:after {
+  content: "▸";
+}
+
+.CodeMirror-selected {
+  background-color: rgba(33, 150, 243, 0.1);
+}
+
+.dark-theme .CodeMirror-selected {
+  background-color: rgba(79, 110, 176, 0.4);
+}
+
+.CodeMirror-cursor {
+  border-left: 2px solid var(--primary-color, #3498db);
+}
+
+.cm-keyword {
+  color: #569cd6;
+}
+
+.cm-string {
+  color: #ce9178;
+}
+
+.cm-comment {
+  color: #6a9955;
+}
+
+.cm-number {
+  color: #b5cea8;
+}
+
+.cm-operator {
+  color: #d4d4d4;
+}
+
+.cm-property {
+  color: #9cdcfe;
+}
+
+.cm-variable {
+  color: #9cdcfe;
+}
+
+.cm-variable-2 {
+  color: #4ec9b0;
+}
+
+.cm-def {
+  color: #dcdcaa;
+}
+
+.cm-builtin {
+  color: #4ec9b0;
+}
+
+
+.slippy-editor {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+
+.CodeMirror-hints {
+  position: absolute;
+  z-index: 10;
+  overflow: hidden;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-height: 20em;
+  overflow-y: auto;
+}
+
+.light-theme .CodeMirror-hints {
+  background: white;
+  border: 1px solid #e0e0e0;
+}
+
+.dark-theme .CodeMirror-hints {
+  background: #252b3b;
+  border: 1px solid #3a4458;
+}
+
+.CodeMirror-hint {
+  padding: 6px 10px;
+  white-space: pre;
+  cursor: pointer;
+}
+
+.light-theme .CodeMirror-hint {
+  color: #333;
+}
+
+.dark-theme .CodeMirror-hint {
+  color: #f8f8f2;
+}
+
+.CodeMirror-hint-active {
+  background-color: var(--primary-color, #3498db);
+  color: white !important;
+}
