@@ -1,0 +1,145 @@
+:root {
+  --bg: #1e1e2e;
+  --bg-secondary: #282a36;
+  --text: #f8f8f2;
+  --text-secondary: #a7a7a7;
+  --border: #44475a;
+  --primary: #8be9fd;
+  --primary-hover: #6272a4;
+  --accent: #50fa7b;
+  --error: #ff5555;
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .token.keyword {
+  color: #ff79c6;
+}
+
+.dark-theme .token.string {
+  color: #f1fa8c;
+}
+
+.dark-theme .token.number {
+  color: #bd93f9;
+}
+
+.dark-theme .token.comment {
+  color: #6272a4;
+}
+
+.dark-theme .token.function {
+  color: #50fa7b;
+}
+
+.dark-theme .token.method {
+  color: #50fa7b;
+}
+
+.dark-theme .token.property {
+  color: #8be9fd;
+}
+
+.dark-theme .token.operator {
+  color: #ff79c6;
+}
+
+.dark-theme .token.punctuation {
+  color: #f8f8f2;
+}
+
+.dark-theme .token.tag {
+  color: #ff79c6;
+}
+
+.dark-theme .token.attribute {
+  color: #50fa7b;
+}
+
+.dark-theme .token.selector {
+  color: #f1fa8c;
+}
+
+.dark-theme .token.variable {
+  color: #f8f8f2;
+}
+
+.dark-theme .token.regex {
+  color: #ffb86c;
+}
+
+.dark-theme .token.boolean {
+  color: #bd93f9;
+}
+
+.dark-theme .token.null {
+  color: #bd93f9;
+}
+
+.dark-theme .token.builtin {
+  color: #8be9fd;
+}
+
+.dark-theme .console-string {
+  color: #f1fa8c;
+}
+
+.dark-theme .console-number {
+  color: #bd93f9;
+}
+
+.dark-theme .console-boolean {
+  color: #bd93f9;
+}
+
+.dark-theme .console-null, .dark-theme .console-undefined {
+  color: #6272a4;
+}
+
+.dark-theme .console-function {
+  color: #50fa7b;
+}
+
+.dark-theme .console-object {
+  color: #8be9fd;
+}
+
+.dark-theme .console-array {
+  color: #ffb86c;
+}
+
+.dark-theme .console-error {
+  color: #ff5555;
+}
+
+.dark-theme .console-warn {
+  color: #f1fa8c;
+}
+
+.dark-theme .console-info {
+  color: #8be9fd;
+}
+
+
+.dark-theme ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark-theme ::-webkit-scrollbar-track {
+  background: #282a36;
+}
+
+.dark-theme ::-webkit-scrollbar-thumb {
+  background: #44475a;
+  border-radius: 4px;
+}
+
+.dark-theme ::-webkit-scrollbar-thumb:hover {
+  background: #6272a4;
+}
+
+
+.dark-theme ::selection {
+  background-color: rgba(98, 114, 164, 0.5);
+  color: #f8f8f2;
+}
