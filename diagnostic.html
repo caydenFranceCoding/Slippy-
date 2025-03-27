@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeAI Assistant - Diagnostic</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            color: #2c3e50;
+        }
+        .diagnostic-section {
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        .diagnostic-title {
+            margin-top: 0;
+            color: #3498db;
+            font-size: 1.3em;
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+        .error {
+            background-color: #f8d7da;
+            border-left: 4px solid #dc3545;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow: auto;
+        }
+        #file-structure {
+            font-family: monospace;
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+    <h1>CodeAI Assistant - Diagnostic Tool</h1>
+
+    <div class="diagnostic-section">
+        <h2 class="diagnostic-title">Environment Information</h2>
+        <div id="environment-info">Loading...</div>
+    </div>
+
+    <div class="diagnostic-section">
+        <h2 class="diagnostic-title">Required Files Check</h2>
+        <div id="file-check">Loading...</div>
+    </div>
+
+    <div class="diagnostic-section">
+        <h2 class="diagnostic-title">Script Initialization Test</h2>
+        <div id="script-test">Loading...</div>
+        <button id="test-scripts">Run Script Test</button>
+    </div>
+
+    <div class="diagnostic-section">
+        <h2 class="diagnostic-title">DOM Elements Check</h2>
+        <div id="dom-check">Loading...</div>
+    </div>
+
+    <div class="diagnostic-section">
+        <h2 class="diagnostic-title">Error Log</h2>
+        <div id="error-log">No errors logged</div>
+        <button id="clear-errors">Clear Log</button>
+    </div>
+
+    <div class="diagnostic-section">
+        <h2 class="diagnostic-title">Recommended File Structure</h2>
+        <div id="file-structure">
+codeai-assistant/
+│
+├── index.html                  # Main entry point
+├── diagnostic.html             # This diagnostic page
+├── favicon.ico                 # Site favicon
+├── README.md                   # Project documentation
+│
+├── css/
+│   ├── normalize.css           # CSS reset/normalize
+│   ├── main.css                # Main stylesheet
+│   ├── editor.css              # Code editor specific styles
+│   ├── console.css             # Console output styles
+│   └── themes/
+│       ├── light.css           # Light theme
+│       └── dark.css            # Dark theme
+│
+├── js/
+│   ├── app.js                  # Main application logic
+│   ├── editor.js               # Code editor functionality
+│   ├── ai-assistant.js         # AI assistant integration
+│   ├── console.js              # Console output handling
+│   ├── file-manager.js         # File management functionality
+│   ├── syntax-highlighter.js   # Custom syntax highlighting
+│   ├── GroqClient.js             # Groq API integration
+│   ├── utils.js                # Utility functions
+│   ├── themes.js               # Theme switcher functionality
+│   └── debug.js                # Debugging utilities
+│
+├── assets/                     # Static assets
+│   ├── icons/                  # UI icons
+│   └── fonts/                  # Custom fonts
+│
+└── mockdata/                   # Mock AI responses for development
+    ├── completions.json        # Code completion examples
+    └── explanations.json       # Code explanation examples
+        </div>
+    </div>
+</body>
+</html>

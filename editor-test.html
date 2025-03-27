@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CodeAI Editor Test</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #1e1e2e;
+      color: #f8f8f2;
+    }
+
+    .code-editor {
+      display: flex;
+      height: 400px;
+      border: 1px solid #44475a;
+      margin-top: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .line-numbers {
+      width: 50px;
+      background-color: #282a36;
+      color: #6272a4;
+      text-align: right;
+      user-select: none;
+      overflow-y: hidden;
+      padding: 10px 0;
+    }
+
+    .line-number {
+      padding: 0 10px;
+    }
+
+    .code-content {
+      flex: 1;
+      position: relative;
+      overflow: auto;
+    }
+
+    .code-input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+      background: transparent;
+      color: transparent;
+      border: none;
+      outline: none;
+      resize: none;
+      font-family: monospace;
+      font-size: 16px;
+      line-height: 1.5;
+      caret-color: #f8f8f2;
+      z-index: 2;
+    }
+
+    .syntax-highlighting {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+      margin: 0;
+      background: transparent;
+      pointer-events: none;
+      white-space: pre;
+      font-family: monospace;
+      font-size: 16px;
+      line-height: 1.5;
+      overflow: visible;
+      z-index: 1;
+    }
+
+    .keyword { color: #ff79c6; }
+    .string { color: #f1fa8c; }
+    .number { color: #bd93f9; }
+    .comment { color: #6272a4; }
+    .function { color: #50fa7b; }
+  </style>
+</head>
+<body>
+  <h1>CodeAI Editor Test</h1>
+
+  <div id="test-editor" class="code-editor"></div>
+
+  <script>
+    class CodeEditor {
+      constructor(elementId) {
+        this.element = document.getElementById(elementId);
+        this.content = '';
+        this.language = 'javascript';
+
+        this.init();
+      }
+
+      init() {
+        // Create editor elements
+        this.createEditorElements();
+
+        // Add event listeners
+        this.addEventListeners();
+
+        // Set default content
+        this.setContent("// Test editor\nfunction test() {\n    console.log('It works!');\n}\n\ntest();");
+      }
+
+      createEditorElements() {
+        // Create line numbers element
+        this.lineNumbers = document.createElement('div');
+        this.lineNumbers.className = 'line-numbers';
+
+        // Create code content element
+        this.codeContent = document.createElement('div');
+        this.codeContent.className = 'code-content';
+
+        // Create textarea for input
+        this.textarea = document.createElement('textarea');
+        this.textarea.className = 'code-input';
+        this.textarea.spellcheck = false;
+
+        // Create syntax highlighting element
+        this.highlighting = document.createElement('pre');
+        this.highlighting.className = 'syntax-highlighting';
+        this.code = document.createElement('code');
+        this.highlighting.appendChild(this.code);
+
+        // Assemble the editor
+        this.codeContent.appendChild(this.textarea);
+        this.codeContent.appendChild(this.highlighting);
+        this.element.appendChild(this.lineNumbers);
+        this.element.appendChild(this.codeContent);
+      }
+
+      addEventListeners() {
+        // Input event
+        this.textarea.addEventListener('input', () => {
+          this.content = this.textarea.value;
+          this.updateEditor();
+        });
+
+        // Sync scroll
+        this.textarea.addEventListener('scroll', () => {
+          this.highlighting.scrollTop = this.textarea.scrollTop;
+          this.highlighting.scrollLeft = this.textarea.scrollLeft;
+        });
+      }
+
+      updateEditor() {
+        // Update line numbers
+        const lines = this.content.split('\n');
+        let lineNumbersHTML = '';
+
+        for (let i = 0; i < lines.length; i++) {
+          lineNumbersHTML += `<div class="line-number">${i + 1}</div>`;
+        }
+
+        this.lineNumbers.innerHTML = lineNumbersHTML;
+
+        // Update syntax highlighting
+        const highlighted = this.highlightSyntax(this.content);
+        this.code.innerHTML = highlighted;
+      }
+
+      highlightSyntax(code) {
+        // Simple syntax highlighter
+        return code
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/\/\/.*/g, '<span class="comment">$&</span>')
+          .replace(/\b(function|return|const|let|var|if|else|for|while)\b/g, '<span class="keyword">$&</span>')
+          .replace(/('.*?'|".*?"|`.*?`)/g, '<span class="string">$&</span>')
+          .replace(/\b(\d+)\b/g, '<span class="number">$&</span>')
+          .replace(/\b([a-zA-Z_$][a-zA-Z0-9_$]*)\s*\(/g, '<span class="function">$&</span>')
+          .replace(/\n/g, '<br>');
+      }
+
+      setContent(content) {
+        this.content = content;
+        this.textarea.value = content;
+        this.updateEditor();
+      }
+
+      getContent() {
+        return this.content;
+      }
+    }
+
+    // Initialize the editor
+    document.addEventListener('DOMContentLoaded', function() {
+      window.editor = new CodeEditor('test-editor');
+      console.log("CodeEditor initialized");
+    });
+  </script>
+</body>
+</html>
